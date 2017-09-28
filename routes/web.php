@@ -17,9 +17,6 @@ Route::get('/create', ['as' => 'posts.create','uses' => 'PostsController@create'
 Route::post('/', ['as' => 'posts.store','uses' => 'PostsController@store']);
 Route::get('/{id}/', ['as' => 'posts.show','uses' => 'PostsController@show']);
 Route::get('/{id}/my-posts', ['as' => 'posts.myposts','uses' => 'PostsController@myPosts']);
-
-
-
-
-
-
+Route::get('/{id}/edit', ['as' => 'posts.edit','uses' => 'PostsController@edit']);
+Route::post('/{id}', ['as' => 'posts.update','uses' => 'PostsController@update']);
+Route::get('/{id}/delete', ['as' => 'posts.destroy','uses' => 'PostsController@destroy']);

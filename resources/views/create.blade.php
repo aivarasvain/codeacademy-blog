@@ -1,7 +1,7 @@
 @extends('base')
 @section('content')
     <div class="col-sm-6 mx-auto">
-    <form action="{{route('posts.store')}}" method="POST">
+    <form action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
 
         <div class="form-group">
             <label for="title">Title</label>
@@ -9,7 +9,7 @@
         </div>
         <div class="form-group">
             <label for="img_path">Img</label>
-            <input class="form-control" id="img_path" name="img_path" type="text">
+            <input class="form-control" id="img_path" name="img_path" type="file">
         </div>
         <div class="form-group">
             <label for="description">Description</label>

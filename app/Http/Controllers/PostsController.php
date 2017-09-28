@@ -49,13 +49,17 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        $imageName = time().'.'.$request->img_path->getClientOriginalExtension();
+        $request->img_path->move(public_path('images'), $imageName);
+
         $post = new Post();
         $post->title = $request->title;
         $post->description = $request->description;
         $post->user_id = auth()->user()->id;
-        $post->img_path = $request->img_path;
+        $post->img_path = $imageName;
         $post->save();
 
+        return redirect(route('posts.index'));
     }
 
     /**
@@ -79,7 +83,10 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('edit', [
+            'post' => $post
+        ]);
     }
 
     /**
@@ -91,7 +98,14 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->user_id = auth()->user()->id;
+        $post->img_path = $request->img_path;
+        $post->save();
+
+        return redirect(route('posts.index'));
     }
 
     /**
@@ -102,6 +116,8 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::destroy($id);
+
+        return redirect(route('posts.index'));
     }
 }

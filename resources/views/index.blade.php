@@ -14,13 +14,13 @@
                             </div>
                             <div class="card-block">
                                 <div class="post-image">
-                                    <a href="#"><img src="{{asset($post->img_path)}}" alt=""></a>
+                                    <a href="{{ route('posts.show', $post->id) }}"><img src="{{asset('images/' . $post->img_path)}}" alt=""></a>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                @if(Auth()->user()->id == $post->user->id )
-                                <a class="btn btn-primary" href="{{ route('posts.show', $post->id) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                <a class="btn btn-danger" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                @if(Auth()->user() && Auth()->user()->id == $post->user->id)
+                                <a class="btn btn-primary" href="{{ route('posts.edit', $post->id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                <a class="btn btn-danger" onclick="return confirm('are you sure?')" href="{{ route('posts.destroy', $post->id) }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                 @else
                                 {{ $post->user->name }}
                                 @endif

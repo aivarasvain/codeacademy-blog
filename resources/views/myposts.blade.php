@@ -14,11 +14,11 @@
                         </div>
                         <div class="card-block">
                             <div class="post-image">
-                                <a href="#"><img src="{{asset($post->img_path)}}" alt=""></a>
+                                <a href="{{ route('posts.show', $post->id) }}"><img src="{{asset('images/' . $post->img_path)}}" alt=""></a>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a class="btn btn-primary" href="{{ route('posts.show', $post->id) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                            <a class="btn btn-primary" href="{{ route('posts.edit', $post->id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                             <a class="btn btn-danger" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>
                         </div>
                     </div>

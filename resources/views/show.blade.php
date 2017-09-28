@@ -8,7 +8,7 @@
             </div>
             <div class="card-block">
                 <div class="post-image">
-                    <a href="#"><img src="{{asset($post->img_path)}}" alt=""></a>
+                    <a href="#"><img src="{{asset('images/' . $post->img_path)}}" alt=""></a>
                 </div>
             </div>
             <div class="post-card-footer card-footer text-muted">
