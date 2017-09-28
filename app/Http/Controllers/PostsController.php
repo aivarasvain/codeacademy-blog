@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -14,9 +15,18 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::get();
+        $posts = Post::with('user')->get();
 
         return view('index', [
+            'posts' => $posts
+        ]);
+    }
+
+    public function myPosts($id)
+    {
+        $posts = Post::where('user_id', $id)->get();
+
+        return view('myposts', [
             'posts' => $posts
         ]);
     }
@@ -28,7 +38,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -39,7 +49,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
     }
 
     /**
@@ -50,7 +60,9 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('show', [
+            'post' => Post::find($id)
+        ]);
     }
 
     /**
