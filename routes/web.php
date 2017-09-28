@@ -14,7 +14,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 Route::get('/', ['as' => 'posts.index','uses' => 'PostsController@index']);
 Route::get('/create', ['as' => 'posts.create','uses' => 'PostsController@create']);
-Route::post('/create', ['as' => 'posts.store','uses' => 'PostsController@store']);
+Route::post('/', ['as' => 'posts.store','uses' => 'PostsController@store']);
 Route::get('/{id}/', ['as' => 'posts.show','uses' => 'PostsController@show']);
 Route::get('/{id}/my-posts', ['as' => 'posts.myposts','uses' => 'PostsController@myPosts']);
 

@@ -10,7 +10,7 @@
                     <div class="col-sm-4">
                         <div class="card mb-4">
                             <div class="card-header">
-                                <a href="#">{{ $post->title }}</a>
+                                <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a>
                             </div>
                             <div class="card-block">
                                 <div class="post-image">

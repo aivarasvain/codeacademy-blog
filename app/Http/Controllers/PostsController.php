@@ -49,7 +49,13 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        $post = new Post();
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->user_id = auth()->user()->id;
+        $post->img_path = $request->img_path;
+        $post->save();
+
     }
 
     /**
